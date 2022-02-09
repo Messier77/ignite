@@ -1,8 +1,8 @@
 const initState = {
-  popular: [],
-  new: [],
-  upcoming: [],
-  searched: [],
+  popularGames: [],
+  newGames: [],
+  upcomingGames: [],
+  searchedGames: [],
 };
 
 const gamesReducer = (state = initState, action) => {
@@ -10,9 +10,9 @@ const gamesReducer = (state = initState, action) => {
     case "FETCH_GAMES":
       return {
         ...state,
-        popular: action.payload.popular,
-        upcoming: action.payload.upcoming,
-        new: action.payload.new,
+        popularGames: action.payload.popularGames,
+        upcomingGames: action.payload.upcomingGames,
+        newGames: action.payload.newGames,
       };
     default:
       return { ...state };
