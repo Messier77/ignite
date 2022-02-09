@@ -1,10 +1,9 @@
 // components and pages
-import Home from "./pages/Home";
+import Home from "./pages/Home.js";
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello Ignite</h1>
       <Home />
     </div>
   );
