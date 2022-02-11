@@ -22,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
         font-size: 3rem;
         font-family: 'Abril Fatface', cursive;
         font-weight: lighter;
-        color: #ff7676;
+        color: #182E39;
     }
     h3 {
         font-size: 1.3rem;
