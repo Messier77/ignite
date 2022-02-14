@@ -10,6 +10,7 @@ const Game = ({ name, released, image, id }) => {
   // load details
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
+    document.body.style.overflow = "hidden";
     dispatch(loadDetail(id));
   };
   return (
@@ -24,7 +25,7 @@ const Game = ({ name, released, image, id }) => {
 };
 
 const StyledGame = styled(motion.div)`
-  height: 50vh;
+  min-height: 30vh;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   border-radius: 1rem;
@@ -32,7 +33,7 @@ const StyledGame = styled(motion.div)`
   cursor: pointer;
   img {
     width: 100%;
-    height: 100%;
+    height: 40vh;
     object-fit: cover;
   }
 `;
