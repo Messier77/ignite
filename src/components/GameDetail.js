@@ -5,9 +5,19 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { smallImage } from "../util";
+// images
+import ps4 from "../img/playstation.svg";
+import ps5 from "../img/ps5.svg";
+import steam from "../img/steam.svg";
+import xbox from "../img/xbox.svg";
+import xboxone from "../img/xboxone.svg";
+import nintendo from "../img/nintendo.svg";
+import apple from "../img/apple.svg";
+import gamepad from "../img/gamepad.svg";
 
 const GameDetail = ({ pathId }) => {
   const navigate = useNavigate();
+
   // exit detail
   const exitDetailHandler = e => {
     const element = e.target;
@@ -16,6 +26,31 @@ const GameDetail = ({ pathId }) => {
       navigate("/");
     }
   };
+
+  // get platform images
+  const getPlatform = platform => {
+    switch (platform) {
+      case "PlayStation 4":
+        return ps4;
+      case "PlayStation 5":
+        return ps5;
+      case "Xbox Series S/X":
+        return xbox;
+      case "Xbox S":
+        return xbox;
+      case "Xbox One":
+        return xboxone;
+      case "PC":
+        return steam;
+      case "Nintendo Switch":
+        return nintendo;
+      case "iOS":
+        return apple;
+      default:
+        return gamepad;
+    }
+  };
+
   // data
   const { screen, game, isLoading } = useSelector(state => state.detail);
   return (
@@ -32,7 +67,11 @@ const GameDetail = ({ pathId }) => {
                 <h3>Platforms</h3>
                 <Platforms>
                   {game.platforms.map(data => (
-                    <h3 key={data.platform.id}>{data.platform.name}</h3>
+                    <img
+                      key={data.platform.id}
+                      src={getPlatform(data.platform.name)}
+                      title={data.platform.name}
+                    />
                   ))}
                 </Platforms>
               </Info>
@@ -103,7 +142,7 @@ const Stats = styled(motion.div)`
 `;
 
 const Info = styled(motion.div)`
-  text-align: center;
+  text-align: right;
 `;
 
 const Platforms = styled(motion.div)`
@@ -111,6 +150,7 @@ const Platforms = styled(motion.div)`
   justify-content: space-evenly;
   img {
     margin-left: 3rem;
+    height: 30px;
   }
 `;
 
