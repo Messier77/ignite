@@ -6,6 +6,7 @@ import logo from "../img/logo.png";
 // redux and routes
 import { fetchSearch } from "../actions/gamesAction";
 import { useDispatch } from "react-redux";
+import { fadeIn } from "../animations";
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,12 @@ const Nav = () => {
 
   const submitSearch = e => {
     e.preventDefault();
-    dispatch(fetchSearch(textInput));
-    setTextInput("");
+    if (textInput) {
+      dispatch(fetchSearch(textInput));
+      setTextInput("");
+    } else {
+      dispatch({ type: "CLEAR_SEARCH" });
+    }
   };
 
   const clearSearched = () => {
@@ -28,7 +33,7 @@ const Nav = () => {
   };
 
   return (
-    <StyledNav>
+    <StyledNav variants={fadeIn} initial="hidden" animate="show">
       <Logo onClick={clearSearched}>
         <img src={logo} alt="logo" />
       </Logo>
